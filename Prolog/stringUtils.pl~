@@ -1,0 +1,9 @@
+chopList([_], []):-!.
+chopList([X|Xs], [X|WithoutLast]) :-
+    chopList(Xs, WithoutLast).
+
+
+chopString(String, ChoppedString):-
+    string_chars(String, Chars),
+    chopList(Chars, NewChars),
+    string_chars(ChoppedString, NewChars).
