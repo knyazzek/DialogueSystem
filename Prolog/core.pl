@@ -137,9 +137,11 @@ get_answer_by_chopping_second_word_by_terminal_keyword([W1,W2|_], Answer):-
 get_answers_by_sentence(Atom, Answers):-
     atom_string(Atom, Sentence),
     get_all_substrings(Sentence, Substrings),
-    get_answers_list_by_string_list(Substrings, Answers).
+    get_answer_by_string_list(Substrings, Answers, _).
 
-get_answers_list_by_string_list([], []):-!.
+%Get answer list
+
+/*get_answers_list_by_string_list([], []):-!.
 
 get_answers_list_by_string_list(Strings, [Answer|OtherAnswers]):-
     get_answer_by_string_list(Strings, Answer, FoundWord),
@@ -147,7 +149,9 @@ get_answers_list_by_string_list(Strings, [Answer|OtherAnswers]):-
     get_answers_list_by_string_list(StringWithoutFoundWord, OtherAnswers),!.
 
 get_answers_list_by_string_list(Strings,[]):-
-    get_answer_by_string_list(Strings, _, _) \= true, !.
+    get_answer_by_string_list(Strings, _, _) \= true, !.*/
+
+%Get answer
 
 get_answer_by_string_list(Strings, Answer, FoundWord):-
     member(FoundWord, Strings),

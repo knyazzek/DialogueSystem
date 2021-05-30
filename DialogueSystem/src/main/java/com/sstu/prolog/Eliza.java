@@ -1,7 +1,10 @@
 package com.sstu.prolog;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
+@Component
 public class Eliza {
     private final Scanner scanner;
     private final JPL jpl;

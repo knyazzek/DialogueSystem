@@ -39,7 +39,7 @@ public class ExcelUtils {
                 COURSEWORK_FOLDER_PATH + "keywords.pl",
                 StandardCharsets.UTF_8);
 
-        int rowCount = sourceSheet.getLastRowNum();
+        int rowCount = sourceSheet.getLastRowNum() + 1;
 
         writer.println(":-encoding(utf8).");
 
@@ -71,7 +71,7 @@ public class ExcelUtils {
                 COURSEWORK_FOLDER_PATH + "associations.pl",
                 StandardCharsets.UTF_8);
 
-        int rowCount = sourceSheet.getLastRowNum();
+        int rowCount = sourceSheet.getLastRowNum() + 1;
 
         writer.println(":-encoding(utf8).");
 
@@ -84,10 +84,12 @@ public class ExcelUtils {
             if (cell != null) {
                 String[] words = cell.toString().split(", ");
 
-                for (String word : words) {
-                    writer.println("association(" +
-                            getPredicateFormWord(word) + ","
-                            + currentRow+ ").");
+                if (words.length != 0 && !words[0].equals("")) {
+                    for (String word : words) {
+                        writer.println("association(" +
+                                getPredicateFormWord(word) + ","
+                                + currentRow+ ").");
+                    }
                 }
             }
 
@@ -103,7 +105,7 @@ public class ExcelUtils {
                 COURSEWORK_FOLDER_PATH + "answers.pl",
                 StandardCharsets.UTF_8);
 
-        int rowCount = sourceSheet.getLastRowNum();
+        int rowCount = sourceSheet.getLastRowNum() + 1;
 
         writer.println(":-dynamic answers/2.");
         writer.println(":-encoding(utf8).");
