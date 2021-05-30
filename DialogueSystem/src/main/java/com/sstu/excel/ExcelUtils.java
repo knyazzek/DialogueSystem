@@ -1,4 +1,4 @@
-package com.sstu;
+package com.sstu.excel;
 
 import lombok.SneakyThrows;
 import org.apache.poi.ss.usermodel.Cell;

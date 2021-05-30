@@ -501,7 +501,7 @@ association("джале",35).
 association(["гулаб", "ямунс"],35).
 association("фир",35).
 association("такос",36).
-association("так",36).
+association("тако",36).
 association("кесадил",36).
 association("фахит",36).
 association("энчилад",36).

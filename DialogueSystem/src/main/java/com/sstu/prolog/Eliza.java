@@ -1,19 +1,25 @@
-package com.sstu;
+package com.sstu.prolog;
 
 import java.util.Scanner;
 
 public class Eliza {
-    final private static Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
+    private final JPL jpl;
+
+    public Eliza() {
+        this.scanner = new Scanner(System.in);
+        this.jpl = new JPL();
+    }
 
     public void startDialogue() {
-        JPL.setUp();
+        jpl.setUp();
         System.out.println("Eliza>Что вы ели в близжайшие пару дней?");
         System.out.print("You>");
         dialogue(scanner.nextLine());
     }
 
     private void dialogue(String sentence) {
-        System.out.println("Eliza>" + JPL.getAnswerBySentence(sentence));
+        System.out.println("Eliza>" + jpl.getAnswerBySentence(sentence));
         System.out.print("You>");
         dialogue(scanner.nextLine());
     }

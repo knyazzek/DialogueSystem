@@ -4,9 +4,9 @@ get_all_substrings(String, Res):-
     get_all_complex_substrings(SimpleSubstrings, ComplexSubstrings),
     append(ComplexSubstrings, SimpleSubstrings, Res),!.
 
-get_all_complex_substrings([Word1,Word2|OtherWords], [H|T]):-
-    string_concat(Word1, " ", Htmp),
-    string_concat(Htmp, Word2, H),
+get_all_complex_substrings([Word1,Word2|OtherWords], [[Word1,Word2]|T]):-
+    %string_concat(Word1, " ", Htmp),
+    %string_concat(Htmp, Word2, H),
     get_all_complex_substrings([Word2|OtherWords],T).
 
 get_all_complex_substrings(_,[]):-!.

@@ -134,24 +134,34 @@ get_answer_by_chopping_second_word_by_terminal_keyword([W1,W2|_], Answer):-
 ****************************************************************
 */
 
-get_answer_by_sentence(Atom, Answer):-
+get_answers_by_sentence(Atom, Answers):-
     atom_string(Atom, Sentence),
     get_all_substrings(Sentence, Substrings),
-    get_answer_by_string_list(Substrings, Answer).
+    get_answers_list_by_string_list(Substrings, Answers).
 
-get_answer_by_string_list(Strings, Answer):-
-    member(String, Strings),
-    get_answer_by_keyword(String, Answer),!.
+get_answers_list_by_string_list([], []):-!.
 
-get_answer_by_string_list(Strings, Answer):-
-    member(Substrings, Strings),
-    get_answer_by_association(Substrings, Answer),!.
+get_answers_list_by_string_list(Strings, [Answer|OtherAnswers]):-
+    get_answer_by_string_list(Strings, Answer, FoundWord),
+    del_elem_from_list(FoundWord, Strings, StringWithoutFoundWord),
+    get_answers_list_by_string_list(StringWithoutFoundWord, OtherAnswers),!.
 
-get_answer_by_string_list(Strings, Answer):-
-    member(Substrings, Strings),
-    get_answer_by_terminal_keyword(Substrings, Answer),!.
+get_answers_list_by_string_list(Strings,[]):-
+    get_answer_by_string_list(Strings, _, _) \= true, !.
 
-get_answer_by_string_list("", "Вы ничего не ввели..."):-!.
+get_answer_by_string_list(Strings, Answer, FoundWord):-
+    member(FoundWord, Strings),
+    get_answer_by_keyword(FoundWord, Answer),!.
+
+get_answer_by_string_list(Strings, Answer, FoundWord):-
+    member(FoundWord, Strings),
+    get_answer_by_association(FoundWord, Answer),!.
+
+get_answer_by_string_list(Strings, Answer, FoundWord):-
+    member(FoundWord, Strings),
+    get_answer_by_terminal_keyword(FoundWord, Answer),!.
+
+get_answer_by_string_list([], "Вы ничего не ввели...", ""):-!.
 
 
 /*
@@ -168,3 +178,31 @@ get_answer(AnswerIndex, Answer):-
 refresh_answers(Index):-
     retract(answers(Index, [_|T])),
     assert(answers(Index, T)).
+
+/*
+****************************************************************
+                 Delete element from string
+****************************************************************
+*/
+
+
+del_elem_from_list(Elem, List, Res):-
+    atomic(List) \= true,
+    del_complex_elem_from_string(Elem, List, ResTmp),
+    del_simple_element_from_list(Elem, ResTmp, Res),!.
+
+del_elem_from_list(Elem, List, Res):-
+    del_simple_element_from_list(Elem, List, Res),!.
+
+del_simple_element_from_list(_, [], []):-!.
+
+del_simple_element_from_list(Elem, [Elem|T], Res):-
+    del_simple_element_from_list(Elem, T, Res).
+
+del_simple_element_from_list(Elem, [H|T], [H|Res]):-
+    Elem \= H,
+    del_simple_element_from_list(Elem, T, Res).
+
+del_complex_elem_from_string([W1,W2|_], List , Res):-
+    del_simple_element_from_list(W1, List, ResTmp),
+    del_simple_element_from_list(W2, ResTmp, Res).
