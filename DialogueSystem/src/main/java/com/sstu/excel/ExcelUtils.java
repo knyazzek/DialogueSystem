@@ -5,12 +5,14 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+@Component
 public class ExcelUtils {
     private static final String WIN_ENCODING = "windows-1251";
     private static final String DEFAULT_EXCEL_FILE_PATH = "C:/Users/Vlad/Desktop/Coursework.xlsx";
@@ -156,7 +158,7 @@ public class ExcelUtils {
     }
 
     @SneakyThrows
-    private static String getWordWithoutEnding(String word) {
+    public static String getWordWithoutEnding(String word) {
         String urlString = "http://www.solarix.ru/php/stemming-provider.php?query=";
         urlString += URLEncoder.encode(word, WIN_ENCODING);
 

@@ -1,3 +1,5 @@
+:-set_prolog_flag(encoding, utf8).
+
 :-[string_utils].
 :-[read_line].
 :-[keywords].
@@ -5,8 +7,6 @@
 :-[answers].
 :-[stop_words].
 :-[save].
-
-:-set_prolog_flag(encoding, utf8).
 
 terminal_keyword("íå çíàþ", 300).
 terminal_keyword(["íå", "çíàþ"], 300).
@@ -219,7 +219,25 @@ refresh_answers(Index):-
 ****************************************************************
 */
 
-
 join_lists(A, B, R):-
-    flatten([A|B], R).
+    append([A], [B], Tmp),
+    flatten(Tmp, R).
 
+
+/*
+****************************************************************
+                    Get first free index
+****************************************************************
+*/
+
+get_first_free_index(R):-
+    get_first_free_index(1, R),!.    
+    
+
+get_first_free_index(CurrentIndex, R):-
+    keyword(_, CurrentIndex),
+    NextIndex is CurrentIndex + 1,
+    get_first_free_index(NextIndex, R).
+
+get_first_free_index(CurrentIndex, CurrentIndex):-
+    keyword(CurrentIndex, _) \= true,!.

@@ -1,14 +1,12 @@
 package com.sstu.controller;
 
+import com.sstu.domain.Predicate;
 import com.sstu.prolog.Eliza;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class AnswerController {
+public class DialogueRestController {
 
     @Autowired
     Eliza eliza;

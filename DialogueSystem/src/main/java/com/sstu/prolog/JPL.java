@@ -1,15 +1,17 @@
 package com.sstu.prolog;
 
+import com.sstu.excel.ExcelUtils;
 import org.jpl7.Atom;
 import org.jpl7.Query;
 import org.jpl7.Term;
 import org.jpl7.Variable;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
+@Component
 public class JPL {
     private final String FILE_PATH;
-    //private final Map<Integer, List<String>> ANSWERS;
     private List<String> userAnswers;
 
     private Integer currentExchange = 0;
@@ -19,7 +21,6 @@ public class JPL {
         FILE_PATH = "D:/University/6 semester" +
                 "/Mathematical Foundations of Artificial Intelligence" +
                 "/Coursework/v2/Prolog/core.pl";
-        //ANSWERS = new HashMap<>();
         userAnswers = new ArrayList<>();
         INTRODUCTORY_WORDS = new ArrayList<>(Arrays.asList(
                 "Кстати... ",
@@ -27,6 +28,8 @@ public class JPL {
                 "Возвращаясь к предыдущей теме... ",
                 "Мы уже говорили об этом выше, но... "
         ));
+
+        setUp();
     }
 
     public void setUp() {
@@ -55,21 +58,7 @@ public class JPL {
 
             userAnswers.add(sentence);
             currentExchange = userAnswers.size();
-/*            Map<String, Term> solution = query.nextSolution();
-            Term[] answersTerms = solution.get("Answers").listToTermArray();
-            List<String> answersStrings = new LinkedList<>();
-
-            for (Term answer : answersTerms) {
-                answersStrings.add(answer.toString());
-            }
-
-            ANSWERS.put(currentExchange, answersStrings);
-            res = ANSWERS.get(currentExchange).get(0);
-            ANSWERS.get(currentExchange).remove(0);*/
-
         } catch (Exception ex) {
-/*            System.out.println("ERROR : " + sentence);
-            ex.printStackTrace();*/
             currentExchange--;
             if (currentExchange >= 0) {
                 res.append(getAnswerBySentence(userAnswers.get(currentExchange)));
@@ -78,5 +67,36 @@ public class JPL {
             }
         }
         return res.toString().replace("'","");
+    }
+
+    public int getFirstFreeIndex() {
+        Variable Index = new Variable("Index");
+        Query query = new Query("get_first_free_index",
+                new Term[] {Index});
+
+        String indexString = query.nextSolution().get("Index").toString();
+        return Integer.parseInt(indexString);
+    }
+
+    public void addKeyword(String keyword, int index) {
+        try {
+            keyword = ExcelUtils.getWordWithoutEnding(keyword);
+            Atom Keyword = new Atom(keyword);
+            org.jpl7.Integer Index = new org.jpl7.Integer(index);
+            Query query = new Query("add_new_keyword",
+                    new Term[] {Keyword, Index});
+
+            query.nextSolution().get("Index");
+        } catch (Exception ex) {
+            System.out.println("Couldn't add predicate : " + keyword);
+        }
+    }
+
+    public void addAssociation(String association, int index) {
+        
+    }
+
+    public void addAnswer(String answer, int index) {
+
     }
 }
