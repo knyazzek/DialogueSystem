@@ -3,11 +3,14 @@
 :-[keywords].
 :-[associations].
 :-[answers].
+:-[stop_words].
+:-[save].
 
+:-set_prolog_flag(encoding, utf8).
 
-terminal_keyword("�� ����", 300).
-terminal_keyword(["��", "����"], 300).
-answers(300, "������?").
+terminal_keyword("íå çíàþ", 300).
+terminal_keyword(["íå", "çíàþ"], 300).
+%answers(300, "Ïî÷åìó?").
 
 /*
 ****************************************************************
@@ -130,6 +133,15 @@ get_answer_by_chopping_second_word_by_terminal_keyword([W1,W2|_], Answer):-
 
 /*
 ****************************************************************
+                Get answer by stop word
+****************************************************************
+*/
+
+get_answer_by_stop_word(String, "stop"):-
+    stop_word(String),!.
+
+/*
+****************************************************************
                      Get answer by sentence
 ****************************************************************
 */
@@ -137,9 +149,11 @@ get_answer_by_chopping_second_word_by_terminal_keyword([W1,W2|_], Answer):-
 get_answers_by_sentence(Atom, Answers):-
     atom_string(Atom, Sentence),
     get_all_substrings(Sentence, Substrings),
-    get_answers_list_by_string_list(Substrings, Answers).
+    get_answer_by_string_list(Substrings, Answers, _).
 
-get_answers_list_by_string_list([], []):-!.
+%Get answer list
+
+/*get_answers_list_by_string_list([], []):-!.
 
 get_answers_list_by_string_list(Strings, [Answer|OtherAnswers]):-
     get_answer_by_string_list(Strings, Answer, FoundWord),
@@ -147,7 +161,13 @@ get_answers_list_by_string_list(Strings, [Answer|OtherAnswers]):-
     get_answers_list_by_string_list(StringWithoutFoundWord, OtherAnswers),!.
 
 get_answers_list_by_string_list(Strings,[]):-
-    get_answer_by_string_list(Strings, _, _) \= true, !.
+    get_answer_by_string_list(Strings, _, _) \= true, !.*/
+
+%Get answer
+
+get_answer_by_string_list(Strings, Answer, FoundWord):-
+    member(FoundWord, Strings),
+    get_answer_by_stop_word(FoundWord, Answer),!.
 
 get_answer_by_string_list(Strings, Answer, FoundWord):-
     member(FoundWord, Strings),
@@ -161,7 +181,7 @@ get_answer_by_string_list(Strings, Answer, FoundWord):-
     member(FoundWord, Strings),
     get_answer_by_terminal_keyword(FoundWord, Answer),!.
 
-get_answer_by_string_list([], "�� ������ �� �����...", ""):-!.
+get_answer_by_string_list([], "Âû íè÷åãî íå ââåëè...", ""):-!.
 
 
 /*
@@ -181,28 +201,85 @@ refresh_answers(Index):-
 
 /*
 ****************************************************************
-                 Delete element from string
+                        Get all
+****************************************************************
+*/
+
+%% get_all(Keyword, Associations, Answers):-
+%%     keyword(Keyword, AnswersIndex),
+%%     get_all_association(AnswersIndex, )
+
+
+%% get_all_association(AnswersIndex, Res):-
+
+
+/*
+****************************************************************
+                    Adding new predicates
+****************************************************************
+*/
+
+%Сделать проверку на то, что уже существует
+
+add_new_keyword(Keyword, AnswersIndex):-
+    assert(keyword(Keyword, AnswersIndex)),
+    save_keywords().
+
+add_new_association(Association, AnswersIndex):-
+    assert(Association, AnswersIndex),
+    save_associations().
+
+add_new_answers(AnswersIndex, NewAnswers):-
+    association(AnswersIndex, OldAnswers),
+    retract(association(AnswersIndex, _)),
+    join_lists(NewAnswers, OldAnswers, Answers),
+    assert(association(AnswersIndex, Answers)),
+    save_answers().
+
+% If specified index doesnt exist
+
+add_new_answers(AnswersIndex, Answers):-
+    flatten([Answers], Res),
+    assert(association(AnswersIndex, Res)),
+    save_answers().
+
+
+/*
+****************************************************************
+                    Deleting predicates
+****************************************************************
+*/
+
+del_keyword(Keyword):-
+    keyword(Keyword, AnswersIndex),
+    retract(keyword(Keyword, AnswersIndex)),
+    save_keywords().
+
+del_assotiation(Association):-
+    association(Association, AnswersIndex),
+    retract(association(Association,AnswersIndex)),
+    save_associations().
+
+del_answer(Answer):-
+    answers(AnswersIndex, Answers),
+    member(Answer, Answers),
+    delete(Answers, Answer, Res),
+    retract(answers(AnswersIndex, Answers)),
+    assert(answers(AnswersIndex, Res)),
+    save_answers().
+
+del_answers_by_index(AnswersIndex):-
+    answers(AnswersIndex, Answers),
+    retract(answers(AnswersIndex, Answers)),
+    save_answers().
+
+/*
+****************************************************************
+                    List utils
 ****************************************************************
 */
 
 
-del_elem_from_list(Elem, List, Res):-
-    atomic(List) \= true,
-    del_complex_elem_from_string(Elem, List, ResTmp),
-    del_simple_element_from_list(Elem, ResTmp, Res),!.
+join_lists(A, B, R):-
+    flatten([A|B], R).
 
-del_elem_from_list(Elem, List, Res):-
-    del_simple_element_from_list(Elem, List, Res),!.
-
-del_simple_element_from_list(_, [], []):-!.
-
-del_simple_element_from_list(Elem, [Elem|T], Res):-
-    del_simple_element_from_list(Elem, T, Res).
-
-del_simple_element_from_list(Elem, [H|T], [H|Res]):-
-    Elem \= H,
-    del_simple_element_from_list(Elem, T, Res).
-
-del_complex_elem_from_string([W1,W2|_], List , Res):-
-    del_simple_element_from_list(W1, List, ResTmp),
-    del_simple_element_from_list(W2, ResTmp, Res).

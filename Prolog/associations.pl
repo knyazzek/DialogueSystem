@@ -1,4 +1,4 @@
-:-encoding(utf8).
+:-dynamic association/2.
 association("вкус",1).
 association("энерги",1).
 association("пищ",1).

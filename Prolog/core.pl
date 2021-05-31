@@ -3,7 +3,10 @@
 :-[keywords].
 :-[associations].
 :-[answers].
+:-[stop_words].
+:-[save].
 
+:-set_prolog_flag(encoding, utf8).
 
 terminal_keyword("íå çíàþ", 300).
 terminal_keyword(["íå", "çíàþ"], 300).
@@ -130,6 +133,15 @@ get_answer_by_chopping_second_word_by_terminal_keyword([W1,W2|_], Answer):-
 
 /*
 ****************************************************************
+                Get answer by stop word
+****************************************************************
+*/
+
+get_answer_by_stop_word(String, "stop"):-
+    stop_word(String),!.
+
+/*
+****************************************************************
                      Get answer by sentence
 ****************************************************************
 */
@@ -152,6 +164,10 @@ get_answers_list_by_string_list(Strings,[]):-
     get_answer_by_string_list(Strings, _, _) \= true, !.*/
 
 %Get answer
+
+get_answer_by_string_list(Strings, Answer, FoundWord):-
+    member(FoundWord, Strings),
+    get_answer_by_stop_word(FoundWord, Answer),!.
 
 get_answer_by_string_list(Strings, Answer, FoundWord):-
     member(FoundWord, Strings),
@@ -185,38 +201,25 @@ refresh_answers(Index):-
 
 /*
 ****************************************************************
-                 Delete element from string
+                        Get all
 ****************************************************************
 */
 
+%% get_all(Keyword, Associations, Answers):-
+%%     keyword(Keyword, AnswersIndex),
+%%     get_all_association(AnswersIndex, )
 
-del_elem_from_list(Elem, List, Res):-
-    atomic(List) \= true,
-    del_complex_elem_from_string(Elem, List, ResTmp),
-    del_simple_element_from_list(Elem, ResTmp, Res),!.
 
-del_elem_from_list(Elem, List, Res):-
-    del_simple_element_from_list(Elem, List, Res),!.
-
-del_simple_element_from_list(_, [], []):-!.
-
-del_simple_element_from_list(Elem, [Elem|T], Res):-
-    del_simple_element_from_list(Elem, T, Res).
-
-del_simple_element_from_list(Elem, [H|T], [H|Res]):-
-    Elem \= H,
-    del_simple_element_from_list(Elem, T, Res).
-
-del_complex_elem_from_string([W1,W2|_], List , Res):-
-    del_simple_element_from_list(W1, List, ResTmp),
-    del_simple_element_from_list(W2, ResTmp, Res).
-
+%% get_all_association(AnswersIndex, Res):-
 
 
 /*
 ****************************************************************
-                       GetAll
+                    List utils
 ****************************************************************
 */
 
- 
+
+join_lists(A, B, R):-
+    flatten([A|B], R).
+

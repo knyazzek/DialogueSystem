@@ -1,14 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 body {
     font-family: 'Roboto', sans-serif;
+    color: white;
     line-height: 2.5em;
     margin: 0px;
+
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 500% 500%;
+    animation: gradient 70s ease infinite;
 }
 
 input {
     font-family: 'Roboto', sans-serif;
     line-height: 1em;
     font-size: 0.8em;
+    border: 1px solid white ;
+}
+
+input:not([type="button"]):not([type="submit"]):not([type="reset"]):hover, input:not([type="button"]):not([type="submit"]):not([type="reset"]):focus, textarea:hover, textarea:focus, select:hover, select:focus
+{
+    border:1px solid lavenderblush;
+    outline:none;
 }
 
 #dialogue {
@@ -19,12 +31,13 @@ input {
 }
 
 #answer {
-    padding: 3% 3% 1% 3%;
+    padding: 5% 3% 1% 3%;
 }
 
 #inputForm {
     padding: 1% 3% 3% 3%;
     margin: auto;
+    visibility: visible;
 }
 
 #userInput {
@@ -32,7 +45,13 @@ input {
 }
 
 #submitButton {
+    color: white;
     width: 15%;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
 }
 /*Navigation Bar*/
 
@@ -40,6 +59,7 @@ input {
     margin: 0px;
     overflow: hidden;
     background-color: #333;
+    font-weight: bold;
 }
 
 #navigationbar a {
@@ -51,11 +71,6 @@ input {
     font-size: 17px;
 }
 
-#navigationbar a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
 #navigationbar a.active {
     background-color: #04AA6D;
     color: white;
@@ -63,4 +78,15 @@ input {
 
 /*Background*/
 
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 

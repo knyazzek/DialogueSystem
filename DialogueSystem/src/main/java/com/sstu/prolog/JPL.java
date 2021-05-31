@@ -74,7 +74,7 @@ public class JPL {
             if (currentExchange >= 0) {
                 res.append(getAnswerBySentence(userAnswers.get(currentExchange)));
             } else {
-                res.append("Я даже не знаю что и сказать...");
+                res.append("impasse");
             }
         }
         return res.toString().replace("'","");
