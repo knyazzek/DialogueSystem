@@ -10,6 +10,6 @@ public class DialogueController {
 
     @GetMapping
     public String homePage() {
-        return "home";
+        return "dialogue";
     }
 }

@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 2.5em;
+    margin: 0px;
+}
+
+input {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1em;
+    font-size: 0.8em;
+}
+
+#dialogue {
+    width: 60%;
+    margin: auto;
+    font-size: 2em;
+    /*border: 1px solid black;*/
+}
+
+#answer {
+    padding: 3% 3% 1% 3%;
+}
+
+#inputForm {
+    padding: 1% 3% 3% 3%;
+    margin: auto;
+}
+
+#userInput {
+    width: 80%;
+}
+
+#submitButton {
+    width: 15%;
+}
+/*Navigation Bar*/
+
+#navigationbar {
+    margin: 0px;
+    overflow: hidden;
+    background-color: #333;
+}
+
+#navigationbar a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+#navigationbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+#navigationbar a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+/*Background*/
+
+

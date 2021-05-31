@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Eliza</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script th:src="@{/js/dialogue.js}"></script>
+</head>
+<header>
+    <div th:replace="fragments/navigationbar :: navigationbar"></div>
+</header>
+<body>
+    <div id="dialogue">
+        <div id="answer" class="text-typing"></div>
+        <form id="inputForm">
+            <input type="text" id="userInput" placeholder="Input" autocomplete="off"/>
+            <input type="button" id="submitButton" onclick="next_answer()" value="Send"/>
+        </form>
+    </div>
+</body>
+</html>

@@ -2,6 +2,7 @@ package com.sstu;
 
 import com.sstu.excel.ExcelUtils;
 import com.sstu.prolog.Eliza;
+import com.sstu.prolog.JPL;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

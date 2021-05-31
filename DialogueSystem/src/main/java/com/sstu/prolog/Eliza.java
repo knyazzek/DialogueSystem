@@ -14,7 +14,16 @@ public class Eliza {
         this.jpl = new JPL();
     }
 
-    public void startDialogue() {
+    public String startDialogue() {
+        jpl.setUp();
+        return "Что вы ели в близжайшие пару дней?";
+    }
+
+    public String getNextAnswer(String sentence) {
+        return jpl.getAnswerBySentence(sentence);
+    }
+
+/*    public void startDialogue() {
         jpl.setUp();
         System.out.println("Eliza>Что вы ели в близжайшие пару дней?");
         System.out.print("You>");
@@ -25,5 +34,5 @@ public class Eliza {
         System.out.println("Eliza>" + jpl.getAnswerBySentence(sentence));
         System.out.print("You>");
         dialogue(scanner.nextLine());
-    }
+    }*/
 }
