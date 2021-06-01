@@ -5,6 +5,7 @@
 :-[keywords].
 :-[associations].
 :-[answers].
+:-[terminal_keywords].
 :-[stop_words].
 :-[save].
 
@@ -219,7 +220,25 @@ refresh_answers(Index):-
 ****************************************************************
 */
 
-
 join_lists(A, B, R):-
-    append(A, B, Tmp)
-    flatten(Tmp, R),
+    append([A], [B], Tmp),
+    flatten(Tmp, R).
+
+
+/*
+****************************************************************
+                    Get first free index
+****************************************************************
+*/
+
+get_first_free_index(R):-
+    get_first_free_index(1, R),!.    
+    
+
+get_first_free_index(CurrentIndex, R):-
+    keyword(_, CurrentIndex),
+    NextIndex is CurrentIndex + 1,
+    get_first_free_index(NextIndex, R).
+
+get_first_free_index(CurrentIndex, CurrentIndex):-
+    keyword(CurrentIndex, _) \= true,!.

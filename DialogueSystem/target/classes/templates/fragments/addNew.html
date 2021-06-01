@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/edit.css}" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="addNew" id="addNew">
+    <table>
+        <tr>
+            <td>
+                <div id="keywords" class="inputsColumn">
+                    <input type="text" class="keyword" placeholder="keyword" autocomplete="off"/>
+                </div>
+                <button onclick="addKeywordInput()" >
+                    <i class="large material-icons">add_circle_outline</i>
+                </button>
+            </td>
+
+            <td>
+                <div id="associations" class="inputsColumn">
+                    <input type="text" class="association" placeholder="association" autocomplete="off"/>
+                </div>
+                <button onclick="addAssociationInput()">
+                    <i class="large material-icons">add_circle_outline</i>
+                </button>
+            </td>
+            <td>
+                <div id="answers" class="inputsColumn">
+                    <input type="text" class="answer" placeholder="answer" autocomplete="off"/>
+                </div>
+                <button onclick="addAnswerInput()">
+                    <i class="large material-icons">add_circle_outline</i>
+                </button>
+            </td>
+        </tr>
+    </table>
+    <input type="button" id="submitButton" onclick="addPredicates()" value="Submit">
+</div>
+</body>
+</html>

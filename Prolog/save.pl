@@ -50,9 +50,9 @@ add_new_answer(AnswersIndex, NewAnswerAtom):-
 
 % If specified index doesnt exist
 
-add_new_answers(AnswersIndex, AnswerAtom):-
+add_new_answer(AnswersIndex, AnswerAtom):-
     atom_string(AnswerAtom, Answer),
-    association(AnswersIndex, _) \= true,
+    answers(AnswersIndex, _) \= true,
     flatten([Answer], Res),
     assert(answers(AnswersIndex, Res)),
     save_all(answers, 'answers.pl').
@@ -64,17 +64,20 @@ add_new_answers(AnswersIndex, AnswerAtom):-
 ****************************************************************
 */
 
-del_keyword(Keyword):-
+del_keyword(KeywordAtom):-
+    atom_string(KeywordAtom, Keyword),
     keyword(Keyword, AnswersIndex),
     retract(keyword(Keyword, AnswersIndex)),
-    save_all(keyword, 'keywords.pl').
+    save_all(keyword, 'keywords.pl'),!.
 
-del_assotiation(Association):-
+del_association(AssociationAtom):-
+    atom_string(AssociationAtom, Association),
     association(Association, AnswersIndex),
     retract(association(Association,AnswersIndex)),
-    save_all(association, 'associations.pl').
+    save_all(association, 'associations.pl'),!.
 
-del_answer(Answer):-
+del_answer(AnswerAtom):-
+    atom_string(AnswerAtom, Answer),
     answers(AnswersIndex, Answers),
     member(Answer, Answers),
     delete(Answers, Answer, Res),

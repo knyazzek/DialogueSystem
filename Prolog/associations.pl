@@ -1144,3 +1144,5 @@ association("генно-модифицирован", 148).
 association(["нитр", "натри"], 148).
 association("ово", 149).
 association("фрукт", 149).
+association("зачёт", 154).
+

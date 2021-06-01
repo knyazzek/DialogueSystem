@@ -30,27 +30,32 @@ save_term(Term, FileName):-
 ****************************************************************
 */
 
-add_new_keyword(Keyword, AnswersIndex):-
+add_new_keyword(KeywordAtom, AnswersIndex):-
+    atom_string(KeywordAtom, Keyword),
     assert(keyword(Keyword, AnswersIndex)),
-    save_term(keyword(Keyword, AnswersIndex), 'keywords.pl').
+    save_all(keyword, 'keywords.pl'),!.
 
-add_new_association(Association, AnswersIndex):-
-    assert(Association, AnswersIndex),
-    save_term(association(Association, AnswersIndex), 'associations.pl').
+add_new_association(AssociationAtom, AnswersIndex):-
+    atom_string(AssociationAtom, Association),
+    assert(association(Association, AnswersIndex)),
+    save_all(association, 'associations.pl'),!.
 
-add_new_answers(AnswersIndex, NewAnswers):-
-    association(AnswersIndex, OldAnswers),
-    retract(association(AnswersIndex, _)),
-    join_lists(NewAnswers, OldAnswers, Answers),
-    assert(association(AnswersIndex, Answers)),
-    save_term(answers(AnswersIndexm Answers), 'answers.pl').
+add_new_answer(AnswersIndex, NewAnswerAtom):-
+    atom_string(NewAnswerAtom, NewAnswer),
+    answers(AnswersIndex, OldAnswers),
+    retract(answers(AnswersIndex, OldAnswers)),
+    join_lists(NewAnswer, OldAnswers, Answers),
+    assert(answers(AnswersIndex, Answers)),
+    save_all(answers, 'answers.pl'),!.
 
 % If specified index doesnt exist
 
-add_new_answers(AnswersIndex, Answers):-
-    flatten([Answers], Res),
-    assert(association(AnswersIndex, Res)),
-    save_term(answers(AnswersIndex, Answers), 'answers.pl').
+add_new_answer(AnswersIndex, AnswerAtom):-
+    atom_string(AnswerAtom, Answer),
+    answers(AnswersIndex, _) \= true,
+    flatten([Answer], Res),
+    assert(answers(AnswersIndex, Res)),
+    save_all(answers, 'answers.pl').
 
 
 /*
@@ -59,15 +64,17 @@ add_new_answers(AnswersIndex, Answers):-
 ****************************************************************
 */
 
-del_keyword(Keyword):-
+del_keyword(KeywordAtom):-
+    atom_string(KeywordAtom, Keyword),
     keyword(Keyword, AnswersIndex),
     retract(keyword(Keyword, AnswersIndex)),
-    save_all(keyword, 'keywords.pl').
+    save_all(keyword, 'keywords.pl'),!.
 
-del_assotiation(Association):-
+del_assotiation(AssociationAtom):-
+    atom_string(AssociationAtom, Association),
     association(Association, AnswersIndex),
     retract(association(Association,AnswersIndex)),
-    save_all(association, 'associations.pl').
+    save_all(association, 'associations.pl'),!.
 
 del_answer(Answer):-
     answers(AnswersIndex, Answers),

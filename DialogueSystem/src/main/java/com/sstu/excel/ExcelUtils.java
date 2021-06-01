@@ -182,12 +182,14 @@ public class ExcelUtils {
             if (CACHED_WORDS.containsKey(word)) {
                 res = CACHED_WORDS.get(word);
             } else {
-                Scanner scanner = new Scanner(System.in);
+/*                Scanner scanner = new Scanner(System.in);
                 System.out.println("=========WARNING============");
                 System.out.println("word has length less than 3");
                 System.out.println(word + " / " + res);
                 res = scanner.nextLine();
-                CACHED_WORDS.put(word, res);
+                CACHED_WORDS.put(word, res);*/
+
+                res = word;
             }
         }
 

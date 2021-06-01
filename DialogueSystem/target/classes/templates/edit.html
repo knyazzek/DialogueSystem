@@ -3,133 +3,25 @@
 <head>
     <title>Eliza</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <!--<link th:href="@{/css/common.css}" rel="stylesheet">-->
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <link th:href="@{/css/edit.css}" rel="stylesheet">
+    <script th:src="@{/js/edit.js}"></script>
+    <script th:src="@{/js/addPredicate.js}"></script>
+    <script th:src="@{/js/delPredicate.js}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <header>
     <div th:replace="fragments/navigationbar :: navigationbar"></div>
 </header>
-<script>
-
-function addKeywordInput() {
-    let elem = document.getElementById('keywords');
-    let newInputElem = document.createElement('input');
-    newInputElem.className = "keyword";
-    elem.appendChild(newInputElem);
-    newInputElem.placeholder = "keyword";
-}
-
-function addAssociationInput() {
-    let elem = document.getElementById('associations');
-    let newInputElem = document.createElement('input');
-    newInputElem.className = "association";
-    elem.appendChild(newInputElem);
-    newInputElem.placeholder = "association";
-}
-
-function addAnswerInput() {
-    let elem = document.getElementById('answers');
-    let newInputElem = document.createElement('input');
-    newInputElem.className = "answer";
-    elem.appendChild(newInputElem);
-    newInputElem.placeholder = "answer";
-}
-
-const getKeywords = () => {
-    let keywords = [];
-    let keywordElements = document.getElementById('keywords');
-    keywordElements.childNodes.forEach(
-        function (element) {
-            if (element.value !== undefined) {
-                keywords.push(element.value);
-            }
-        }
-    );
-    console.log(keywords);
-    return keywords;
-}
-
-const getAssociations = () => {
-    let associations = [];
-    let associationElements = document.getElementById('associations');
-    associationElements.childNodes.forEach(
-        function (element) {
-            if (element.value !== undefined) {
-                associations.push(element.value);
-            }
-        }
-    );
-    console.log(associations);
-    return associations;
-}
-
-const getAnswers = () => {
-    let answers = [];
-    let answerElements = document.getElementById('answers');
-    answerElements.childNodes.forEach(
-        function (element) {
-            if (element.value !== undefined) {
-                answers.push(element.value);
-            }
-        }
-    );
-    console.log(answers);
-    return answers;
-}
-
-function addPredicates() {
-    let answers =  getAnswers();
-    let associations = getAssociations();
-    let keywords = getKeywords();
-
-    $.ajax({
-        url:'/add_predicate',
-        dataType: 'json',
-        type: 'POST',
-        cache: false,
-        contentType: 'application/json',
-        data: JSON.stringify({
-            keywords: keywords,
-            associations: associations,
-            answers: answers
-        }),
-        success: console.log('success')
-    })
-}
-
-</script>
 <body>
-    <h2>Edit page</h2>
-    <div>
-        <div>
-            <div id="keywords">
-                <input type="text" class="keyword" placeholder="keyword" autocomplete="off"/>
-            </div>
-            <button onclick="addKeywordInput()" >
-                <img src="https://img.icons8.com/ios/50/000000/add--v2.png"/>
-            </button>
-        </div>
-
-        <div>
-            <div id="associations">
-                <input type="text" class="association" placeholder="association" autocomplete="off"/>
-            </div>
-            <button onclick="addAssociationInput()">
-                <img src="https://img.icons8.com/ios/50/000000/add--v2.png"/>
-            </button>
-        </div>
-
-        <div>
-            <div id="answers">
-                <input type="text" class="answer" placeholder="answer" autocomplete="off"/>
-
-            </div>
-            <button onclick="addAnswerInput()">
-                <img src="https://img.icons8.com/ios/50/000000/add--v2.png"/>
-            </button>
-        </div>
-
-        <input type="button" id="submitButton" onclick="addPredicates()" value="Применить">
+<div id="editBlock">
+    <div id="selectMode">
+        <button onclick="enableAdding()">Add new</button>
+        <button onclick="enableDeleting()">Delete</button>
     </div>
+    <div th:replace="fragments/addNew :: addNew"></div>
+    <div th:replace="fragments/del :: del"></div>
+</div>
 </body>
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/edit.css}" rel="stylesheet">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<div th:fragment="del" id="del">
+    <table>
+        <tr>
+            <td>
+                <div id="keywords" class="inputsColumn">
+                    <input id="delKeyword" type="text" class="keyword" placeholder="keyword" autocomplete="off"/>
+                </div>
+                <button onclick="delKeyword()">
+                    <i class="large material-icons">clear</i>
+                </button>
+            </td>
+
+            <td>
+                <div id="associations" class="inputsColumn">
+                    <input id="delAssociation" type="text" class="association" placeholder="association" autocomplete="off"/>
+                </div>
+                <button onclick="delAssociation()">
+                    <i class="large material-icons">clear</i>
+                </button>
+            </td>
+            <td>
+                <div id="answers" class="inputsColumn">
+                    <input id="delAnswer" type="text" class="answer" placeholder="answer" autocomplete="off"/>
+                </div>
+                <button onclick="delAnswer()">
+                    <i class="large material-icons">clear</i>
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

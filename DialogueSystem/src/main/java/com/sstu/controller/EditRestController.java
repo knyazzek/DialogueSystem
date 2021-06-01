@@ -16,22 +16,51 @@ public class EditRestController {
     JPL jpl;
 
     @PostMapping("add_predicate")
-    public void addPredicate(@RequestBody Predicate predicate) {
+    public String addPredicate(@RequestBody Predicate predicate) {
         System.out.println(predicate);
         int index = jpl.getFirstFreeIndex();
 
         for (String keyword : predicate.getKeywords()) {
-            jpl.addKeyword(keyword, index);
+            if (jpl.addKeyword(keyword, index).equals("error"))
+                return "error";
         }
 
         for (String association : predicate.getAssociations()) {
-            jpl.addAssociation(association, index);
+            if (jpl.addAssociation(association, index).equals("error"))
+                return "error";
         }
 
         for (String answer : predicate.getAnswers()) {
-            jpl.addAnswer(answer, index);
+            if (jpl.addAnswer(answer, index).equals("error"))
+                return "error";
         }
+        return "ok";
+    }
 
-        System.out.println("Adding predicates complete");
+    @PostMapping("del_keyword_predicate")
+    public String delKeywordPredicate(String keyword) {
+        if (!keyword.equals("")) {
+            return jpl.delKeyword(keyword);
+        } else {
+            return "error";
+        }
+    }
+
+    @PostMapping("del_association_predicate")
+    public String delAssociationPredicate(String association) {
+        if (!association.equals("")) {
+            return jpl.delAssociation(association);
+        } else {
+            return "error";
+        }
+    }
+
+    @PostMapping("del_answer_predicate")
+    public String delAnswerPredicate(String answer) {
+        if (!answer.equals("")) {
+            return jpl.delAnswer(answer);
+        } else {
+            return "error";
+        }
     }
 }

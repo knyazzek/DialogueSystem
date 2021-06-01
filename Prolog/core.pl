@@ -5,12 +5,9 @@
 :-[keywords].
 :-[associations].
 :-[answers].
+:-[terminal_keywords].
 :-[stop_words].
 :-[save].
-
-terminal_keyword("íå çíàþ", 300).
-terminal_keyword(["íå", "çíàþ"], 300).
-%answers(300, "Ïî÷åìó?").
 
 /*
 ****************************************************************
@@ -201,20 +198,6 @@ refresh_answers(Index):-
 
 /*
 ****************************************************************
-                        Get all
-****************************************************************
-*/
-
-%% get_all(Keyword, Associations, Answers):-
-%%     keyword(Keyword, AnswersIndex),
-%%     get_all_association(AnswersIndex, )
-
-
-%% get_all_association(AnswersIndex, Res):-
-
-
-/*
-****************************************************************
                     List utils
 ****************************************************************
 */
@@ -231,8 +214,8 @@ join_lists(A, B, R):-
 */
 
 get_first_free_index(R):-
-    get_first_free_index(1, R),!.    
-    
+    get_first_free_index(1, R),!.
+
 
 get_first_free_index(CurrentIndex, R):-
     keyword(_, CurrentIndex),

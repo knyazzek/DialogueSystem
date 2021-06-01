@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+#editBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#selectMode {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#selectMode > button {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    line-height: 2.5em;
+    font-size: 200%;
+    margin: 3%;
+}
+
+.inputsColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.material-icons {
+    color: white;
+}
+
+#addNew {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+table {
+    display: flex;
+    justify-content: center;
+}
+
+tr {
+    display: flex;
+    justify-content: space-between;
+}
+
+td {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+input {
+    margin: 2%;
+    font-size: 1.5em;
+}
+
+button {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+}
+
+#submitButton {
+    margin: auto;
+    margin-top: 3%;
+}

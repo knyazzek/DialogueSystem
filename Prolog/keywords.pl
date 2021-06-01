@@ -78,6 +78,7 @@ keyword("сахар", 48).
 keyword("сла", 48).
 keyword("бутербро", 49).
 keyword("сэндвич", 49).
+keyword("колбас", 49).
 keyword("яйц", 50).
 keyword("яичниц", 50).
 keyword("омлет", 50).

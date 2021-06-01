@@ -78,7 +78,8 @@ public class JPL {
         return Integer.parseInt(indexString);
     }
 
-    public void addKeyword(String keyword, int index) {
+    public String addKeyword(String keyword, int index) {
+        if (keyword.equals("")) return "error";
         try {
             keyword = ExcelUtils.getWordWithoutEnding(keyword);
             Atom Keyword = new Atom(keyword);
@@ -86,17 +87,93 @@ public class JPL {
             Query query = new Query("add_new_keyword",
                     new Term[] {Keyword, Index});
 
-            query.nextSolution().get("Index");
+            query.nextSolution();
+            return "ok";
         } catch (Exception ex) {
-            System.out.println("Couldn't add predicate : " + keyword);
+            ex.printStackTrace();
+            System.out.println("Couldn't add keyword : " + keyword);
+            return "error";
         }
     }
 
-    public void addAssociation(String association, int index) {
-        
+    public String addAssociation(String association, int index) {
+        if (association.equals("")) return "error";
+        try {
+            association = ExcelUtils.getWordWithoutEnding(association);
+            Atom Association = new Atom(association);
+            org.jpl7.Integer Index = new org.jpl7.Integer(index);
+            Query query = new Query("add_new_association",
+                    new Term[] {Association, Index});
+
+            query.nextSolution().get("Index");
+            return "ok";
+        } catch (Exception ex) {
+            System.out.println("Couldn't add association : " + association);
+            return "error";
+        }
     }
 
-    public void addAnswer(String answer, int index) {
+    public String addAnswer(String answer, int index) {
+        if (answer.equals("")) return "error";
+        try {
+            answer = ExcelUtils.getWordWithoutEnding(answer);
+            Atom Answer = new Atom(answer);
+            org.jpl7.Integer Index = new org.jpl7.Integer(index);
+            Query query = new Query("add_new_answer",
+                    new Term[] {Index, Answer});
 
+            query.nextSolution();
+            System.out.println("Adding predicates complete");
+            return "ok";
+        } catch (Exception ex) {
+            System.out.println("Couldn't add answer : " + answer);
+            return "error";
+        }
     }
+
+    public String delKeyword(String keyword) {
+        try {
+            Atom Keyword = new Atom(keyword);
+            Query query = new Query("del_keyword",
+                    new Term[] {Keyword});
+
+            query.nextSolution();
+            return "ok";
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Couldn't delete keyword : " + keyword);
+            return "error";
+        }
+    }
+
+    public String delAssociation(String association) {
+        try {
+            Atom Keyword = new Atom(association);
+            Query query = new Query("del_association",
+                    new Term[] {Keyword});
+
+            query.nextSolution();
+            return "ok";
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Couldn't delete keyword : " + association);
+            return "error";
+        }
+    }
+
+    public String delAnswer(String answer) {
+        try {
+            Atom Keyword = new Atom(answer);
+            Query query = new Query("del_answer",
+                    new Term[] {Keyword});
+
+            query.nextSolution();
+            return "ok";
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Couldn't delete keyword : " + answer);
+            return "error";
+        }
+    }
+
 }
