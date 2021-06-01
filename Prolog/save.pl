@@ -11,6 +11,9 @@ save_all(Term, FileName):-
     project_folder(FolderPath),
     atom_concat(FolderPath, FileName, FilePath),
     tell(FilePath),
+    write(':- encoding(utf8).\n\n'),
+    told,
+    append(FilePath),
     listing(Term),
     told.
 

@@ -1,3 +1,5 @@
+:- encoding(utf8).
+
 :- dynamic association/2.
 
 association("вкус", 1).
@@ -11,27 +13,27 @@ association("потребност", 1).
 association("холодильни", 1).
 association("мяс", 1).
 association("хле", 1).
-association("ово", 1).
+association("овощ", 1).
 association("фрукт", 1).
 association("повар", 1).
 association("кулинари", 1).
 association("трапез", 1).
 association("сла", 2).
 association("солён", 2).
-association("гор", 2).
+association("горьк", 2).
 association("кисл", 2).
-association("ост", 2).
+association("остр", 2).
 association("прян", 2).
 association("зап", 2).
 association("истощен", 3).
 association("жажд", 3).
-association("уста", 3).
-association("аппе", 4).
+association("устав", 3).
+association("аппетит", 4).
 association("люб", 4).
 association("нрав", 4).
-association("сем", 5).
-association("род", 5).
-association("близ", 5).
+association("семь", 5).
+association("родит", 5).
+association("близки", 5).
 association("счаст", 5).
 association("разочарован", 5).
 association("гнев", 5).
@@ -49,7 +51,7 @@ association("рецепт", 7).
 association("морожен", 8).
 association("морозильни", 8).
 association("охлажден", 8).
-association("кух", 9).
+association("кухн", 9).
 association("плит", 9).
 association("стрепн", 9).
 association("энерги", 10).
@@ -59,8 +61,8 @@ association("бел", 10).
 association("углево", 10).
 association("голо", 10).
 association("необходим", 10).
-association("нуж", 10).
-association("ово", 11).
+association("нужн", 10).
+association("овощ", 11).
 association("фрукт", 11).
 association("каш", 11).
 association("моло", 11).
@@ -74,31 +76,30 @@ association("гастрон", 13).
 association("нрав", 13).
 association(["правил", "питан"], 14).
 association("витам", 14).
-association("ово", 14).
+association("овощ", 14).
 association("фрукт", 14).
 association("сок", 14).
 association("варен", 14).
 association("тушен", 14).
-association("туш", 14).
 association("салат", 14).
 association("гарнир", 15).
 association("калорийност", 15).
 association("бел", 15).
 association("куриц", 15).
-association("инде", 15).
+association("индейк", 15).
 association("колбас", 15).
-association("мыш", 15).
+association("мышц", 15).
 association("свин", 15).
 association("говяд", 15).
 association("баран", 15).
 association("куриц", 15).
 association("козлятин", 15).
-association("кон", 15).
+association("конин", 15).
 association("олен", 15).
 association("крольчатин", 15).
-association("бек", 15).
+association("бекон", 15).
 association("котлет", 15).
-association("гол", 15).
+association("голен", 15).
 association("сало", 15).
 association("стейк", 15).
 association("отбив", 15).
@@ -110,19 +111,19 @@ association("шницел", 15).
 association("щук", 16).
 association("карп", 16).
 association("лещ", 16).
-association("лосо", 16).
+association("лосос", 16).
 association("судак", 16).
-association("жер", 16).
+association("жерех", 16).
 association("осётр", 16).
 association("скумбри", 16).
-association("белу", 16).
+association("белуг", 16).
 association("форел", 16).
 association("селёд", 16).
-association("трес", 16).
+association("треск", 16).
 association("берш", 16).
 association("окун", 16).
 association("ерш", 16).
-association("нал", 16).
+association("налим", 16).
 association("сом", 16).
 association("пиран", 16).
 association("густер", 16).
@@ -130,12 +131,12 @@ association("угор", 16).
 association("язь", 16).
 association("кара", 16).
 association("лин", 16).
-association("чех", 16).
+association("чехон", 16).
 association("краснопер", 16).
 association("толстолоби", 16).
 association("стерляд", 16).
 association("хариус", 16).
-association("инде", 17).
+association("индейк", 17).
 association("груд", 17).
 association("яйц", 17).
 association("цыпл", 17).
@@ -155,9 +156,9 @@ association("лук", 19).
 association("чесн", 19).
 association("баклажан", 19).
 association("кабач", 19).
-association("ред", 19).
+association("редис", 19).
 association("тыкв", 19).
-association("пер", 19).
+association("перец", 19).
 association("каперс", 19).
 association("броккол", 19).
 association("кукуруз", 19).
@@ -165,12 +166,12 @@ association("пастернак", 19).
 association("патиссон", 19).
 association("черр", 19).
 association("редис", 19).
-association("реп", 19).
-association("све", 19).
+association("репа", 19).
+association("свекл", 19).
 association("батат", 19).
 association("хрен", 19).
 association("сельдер", 19).
-association("ово", 20).
+association("овощ", 20).
 association("десерт", 20).
 association("абрикос", 20).
 association("авокад", 20).
@@ -180,7 +181,7 @@ association("аннон", 20).
 association("апельсин", 20).
 association("банан", 20).
 association("бергамот", 20).
-association("гран", 20).
+association("гранат", 20).
 association("грейпфр", 20).
 association("груш", 20).
 association("гуав", 20).
@@ -192,21 +193,20 @@ association("киви", 20).
 association("кумкват", 20).
 association("лайм", 20).
 association("лимон", 20).
-association("лич", 20).
+association("личи", 20).
 association("лонган", 20).
-association("манг", 20).
-association("мандар", 20).
+association("манго", 20).
+association("мандарин", 20).
 association("маракуй", 20).
 association("мушму", 20).
 association("нектар", 20).
 association("папай", 20).
-association("перси", 20).
-association("пом", 20).
-association("померан", 20).
+association("персик", 20).
+association("померанец", 20).
 association("рамбутан", 20).
 association("салак", 20).
 association("саподилл", 20).
-association("сви", 20).
+association("свити", 20).
 association("слив", 20).
 association("танже", 20).
 association("хеномелес", 20).
@@ -214,7 +214,7 @@ association("хурм", 20).
 association("цитрон", 20).
 association("черимой", 20).
 association("чомп", 20).
-association("ябло", 20).
+association("яблок", 20).
 association("арбуз", 20).
 association("дын", 20).
 association("зап", 21).
@@ -233,21 +233,22 @@ association("крач", 21).
 association("куркум", 21).
 association(["лавров", "лист"], 21).
 association("лакриц", 21).
-association("пер", 21).
+association("перец", 21).
+association("перца", 21).
 association("чили", 21).
-association("сол", 21).
+association("соль", 21).
 association("кардамон", 21).
 association("тмин", 21).
 association("ореган", 21).
 association("базили", 21).
-association("зир", 21).
+association("зира", 21).
 association("барбарис", 21).
 association("шафран", 21).
-association("папри", 21).
+association("паприк", 21).
 association("кориц", 21).
 association("гвозди", 21).
 association("хмели-сун", 21).
-association("карр", 21).
+association("карри", 21).
 association("майоран", 21).
 association("кориц", 21).
 association("гвозди", 21).
@@ -266,7 +267,7 @@ association("творо", 23).
 association(["спортив", "питан"], 23).
 association(["пищев", "ценност"], 23).
 association("ожирен", 24).
-association("кух", 25).
+association("кухн", 25).
 association("бюджет", 25).
 association("окрош", 26).
 association("греч", 26).
@@ -281,7 +282,8 @@ association("олад", 26).
 association("расте", 26).
 association("ватруш", 26).
 association("кулебяк", 26).
-association("каш", 26).
+association("кашу", 26).
+association("каша", 26).
 association("блин", 26).
 association("олив", 26).
 association("венегр", 26).
@@ -290,20 +292,19 @@ association("пастил", 26).
 association("холод", 26).
 association(["солён", "помидор"], 26).
 association("окрош", 26).
-association("греч", 26).
+association("гречк", 26).
 association("суш", 27).
 association("ролл", 27).
-association("саш", 27).
-association("рам", 27).
+association("сашим", 27).
+association("рамен", 27).
 association("удон", 27).
 association("якитор", 27).
 association("якинув", 27).
-association("кан", 27).
 association("оден", 27).
 association("гёдз", 27).
 association("такояк", 27).
 association("темпур", 27).
-association("тоф", 27).
+association("тофу", 27).
 association("суки", 27).
 association("тонкац", 27).
 association("моти", 27).
@@ -324,10 +325,7 @@ association(["као", "на", "фет"], 28).
 association(["кай", "джи", "му", "сап"], 28).
 association(["као", "ний", "му", "янг"], 28).
 association(["му", "дад", "дай"], 28).
-association("ям", 28).
 association("као", 28).
-association("му", 28).
-association("пур", 29).
 association("хачапур", 29).
 association("назук", 29).
 association("чвиштар", 29).
@@ -342,7 +340,6 @@ association("мцва", 29).
 association("харч", 29).
 association("мацон", 29).
 association("чурчхе", 29).
-association("чир", 29).
 association("панин", 30).
 association(["пан", "котт"], 30).
 association("джелат", 30).
@@ -384,17 +381,15 @@ association("галантин", 31).
 association("терр", 31).
 association("андуйет", 31).
 association("трюфе", 31).
-association("фуа-г", 31).
+association("фуа", 31).
 association("устриц", 31).
 association("улит", 31).
 association(["лягушач", "лап"], 31).
 association("каштан", 31).
-association("киш", 31).
 association("тартифл", 31).
 association("писсальдьер", 31).
 association("клафу", 31).
 association("профитр", 31).
-association("креп", 31).
 association("круассан", 31).
 association(["гpибнoй", "кpeм-cyп"], 31).
 association(["телятин", "по-орловс"], 31).
@@ -418,17 +413,14 @@ association("польворон", 32).
 association(["каталонс", "крем,"], 32).
 association("кахвалт", 33).
 association("менем", 33).
-association("сим", 33).
+association("симит", 33).
 association("чорб", 33).
 association("мант", 33).
-association("мез", 33).
 association("долма,сарм", 33).
 association("кебаб", 33).
 association("кефт", 33).
 association(["имам", "баил"], 33).
 association("лахмакун", 33).
-association("пид", 33).
-association("бор", 33).
 association("гозлем", 33).
 association(["бали", "экме"], 33).
 association("кумпир", 33).
@@ -441,9 +433,7 @@ association(["шиф", "чорбас"], 33).
 association(["молоч", "суп", "тархан"], 33).
 association("кокореч", 33).
 association("суджук", 33).
-association("сим", 33).
 association("бёр", 33).
-association("пит", 33).
 association("гёзлем", 33).
 association("хайдар", 33).
 association("хумус", 33).
@@ -451,13 +441,11 @@ association("пияз", 33).
 association(["аджил", "эзм"], 33).
 association("локм", 33).
 association("тулумб", 33).
-association("пек", 34).
 association("тяньцзы", 34).
 association("хэбэй", 34).
 association("шаньс", 34).
 association(["внутрен", "монголи"], 34).
 association("хэйлунцзян", 34).
-association("гир", 34).
 association("ляон", 34).
 association("шанха", 34).
 association("цзянс", 34).
@@ -485,7 +473,7 @@ association("нинс", 34).
 association("гонконг", 34).
 association("мака", 34).
 association("тайва", 34).
-association("дха", 35).
+association("дхал", 35).
 association(["роган", "джош"], 35).
 association("бирья", 35).
 association(["дах", "маач"], 35).
@@ -500,8 +488,7 @@ association("расгулл", 35).
 association("джале", 35).
 association(["гулаб", "ямунс"], 35).
 association("фир", 35).
-association("такос", 36).
-association("так", 36).
+association("тако", 36).
 association("кесадил", 36).
 association("фахит", 36).
 association("энчилад", 36).
@@ -519,7 +506,7 @@ association(["доро", "блюд"], 38).
 association("вкус", 38).
 association(["доро", "кушан"], 38).
 association("официант", 38).
-association("мен", 38).
+association("меню", 38).
 association("повар", 38).
 association("встреч", 38).
 association("романти", 38).
@@ -528,23 +515,23 @@ association("заведен", 38).
 association("чайхон", 38).
 association("бабуш", 39).
 association("отец", 39).
-association("пап", 39).
+association("папа", 39).
 association("близ", 39).
 association("родственни", 39).
-association("сем", 39).
+association("семь", 39).
 association("родит", 39).
 association("мам", 40).
 association("отец", 40).
 association("пап", 40).
-association("близ", 40).
+association("близк", 40).
 association("родственни", 40).
-association("сем", 40).
-association("родит", 40).
+association("семь", 40).
+association("родител", 40).
 association("бабуш", 41).
 association("мам", 41).
 association("близ", 41).
 association("родственни", 41).
-association("сем", 41).
+association("семь", 41).
 association("родит", 41).
 association("мам", 42).
 association("бабуш", 42).
@@ -554,10 +541,10 @@ association("сем", 42).
 association("муж", 42).
 association("жен", 42).
 association("сын", 42).
-association("доч", 42).
-association("кух", 42).
+association("дочь", 42).
+association("кухн", 42).
 association("холодильни", 42).
-association("каф", 43).
+association("кафе", 43).
 association("ресторан", 43).
 association("столов", 43).
 association("общеп", 43).
@@ -593,9 +580,9 @@ association(["японс", "кух"], 47).
 association("филадельфи", 47).
 association("эби", 47).
 association("унаг", 47).
-association("сяк", 47).
+association("сяке", 47).
 association("калифорн", 47).
-association("мак", 47).
+association("маки", 47).
 association("конфет", 48).
 association("торт", 48).
 association("пирож", 48).
@@ -617,7 +604,6 @@ association("пармезан", 51).
 association("российс", 51).
 association("моцарелл", 51).
 association(["дор", "блю"], 51).
-association("бри", 51).
 association("камбоцол", 51).
 association("камамб", 51).
 association("масд", 51).
@@ -665,13 +651,12 @@ association(["морс", "капуст"], 52).
 association("ракообраз", 52).
 association("иглокожие.", 52).
 association("фрукт", 53).
-association("ово", 53).
+association("овощ", 53).
 association("мандар", 53).
 association("лайм", 53).
-association("анг", 53).
+association("англи", 53).
 association("бергамот", 53).
 association("гаяним", 53).
-association("кар", 53).
 association("каламонд", 53).
 association("цитрофортунелл", 53).
 association("клементин", 53).
@@ -679,11 +664,9 @@ association("минеол", 53).
 association("натсудайда", 53).
 association("оранже", 53).
 association(["пальчиков", "лайм"], 53).
-association("пом", 53).
 association("понкан", 53).
 association("понцирус", 53).
 association("рангпур", 53).
-association("сви", 53).
 association("ороблан", 53).
 association("танже", 53).
 association("танжер", 53).
@@ -729,13 +712,12 @@ association("чай", 57).
 association("коф", 57).
 association("лимонад", 57).
 association("лимонад", 58).
-association("коф", 58).
+association("кофе", 58).
 association("ромаш", 58).
 association(["груд", "сбор"], 58).
 association("звероб", 58).
 association("чебр", 58).
 association("каркад", 58).
-association("мат", 58).
 association("улун", 58).
 association("ройбуш", 58).
 association("куд", 58).
@@ -749,7 +731,6 @@ association(["ми", "лань", "сян", "дань", "цун"], 58).
 association(["да", "хун", "пао"], 58).
 association(["уи", "шуй", "сянь"], 58).
 association(["уи", "жоу", "гуй"], 58).
-association("пек", 58).
 association("шалф", 58).
 association("типсов", 58).
 association("lipton", 58).
@@ -763,7 +744,6 @@ association("каппучин", 59).
 association("лунг", 59).
 association("глясс", 59).
 association("макиат", 59).
-association("раф", 59).
 association("ристретт", 59).
 association("аффогат", 59).
 association("фрапп", 59).
@@ -790,7 +770,6 @@ association(["ред", "ай"], 59).
 association("буллетпруф", 59).
 association("меланж", 59).
 association("гильерм", 59).
-association("мас", 59).
 association("айриш", 59).
 association("ристретт", 59).
 association(["аффо", "гат"], 59).
@@ -826,7 +805,7 @@ association("монет", 61).
 association("спутни", 61).
 association("семе", 61).
 association("ларёк", 61).
-association("ово", 62).
+association("овощ", 62).
 association(["правил", "питан"], 62).
 association(["селёд", "под", "шуб"], 62).
 association("винегр", 62).
@@ -846,7 +825,7 @@ association("шопский,", 62).
 association("сухофрукт", 63).
 association("арахис", 63).
 association("миндал", 63).
-association("кеш", 63).
+association("кешью", 63).
 association("фундук", 63).
 association("фисташ", 63).
 association(["грецк", "орех"], 63).
@@ -855,13 +834,12 @@ association("пекан", 63).
 association("макадами", 63).
 association("мускат", 63).
 association("фрукт", 64).
-association("бел", 65).
+association("белк", 65).
 association("протеин", 65).
 association("гейнер", 65).
 association("креатин", 65).
 association("изотони", 65).
 association("вкус", 66).
-association("ед", 66).
 association("кетчуп", 67).
 association("майонез", 67).
 association("фритюр", 68).
@@ -943,13 +921,13 @@ association("кефмр", 84).
 association("морожен", 84).
 association(["нов", "год"], 85).
 association(["день", "рожден"], 85).
-association("мас", 86).
-association("соч", 87).
+association("масл", 86).
+association("сочн", 87).
 association("приправ", 88).
 association(["мексиканс", "кух"], 88).
 association("лимон", 89).
-association("сол", 90).
-association("вар", 91).
+association("солён", 90).
+association("варит", 91).
 association("пп", 92).
 association("вред", 92).
 association(["гриб", "мацутакэ"], 93).
@@ -961,11 +939,9 @@ association("фугу", 93).
 association("шафран", 93).
 association(["клубни", "арно"], 93).
 association("филе-миньон", 93).
-association("бал", 93).
 association("билтонг", 93).
 association("боттар", 93).
 association(["кас", "мар"], 93).
-association("икр", 93).
 association("conpoy", 93).
 association("дуриан", 93).
 association("эскарг", 93).
@@ -991,7 +967,7 @@ association("спагетт", 95).
 association("карбонар", 95).
 association("рож", 95).
 association("ригат", 95).
-association("пен", 95).
+association("пенне", 95).
 association("болоньез", 95).
 association("диталин", 95).
 association("букатин", 95).
@@ -1004,12 +980,12 @@ association("маккерон", 95).
 association("тортильон", 95).
 association("звездоч", 95).
 association(["бол", "живот"], 96).
-association("бол", 96).
+association("болит", 96).
 association("плох", 96).
 association("тошн", 96).
-association("кух", 97).
+association("кухн", 97).
 association("холодильни", 97).
-association("сла", 98).
+association("сладк", 98).
 association(["жир", "ед"], 98).
 association(["вред", "ед"], 98).
 association("фастфуд", 98).
@@ -1017,14 +993,15 @@ association("протух", 99).
 association("прокис", 99).
 association("праздни", 100).
 association(["нов", "год"], 100).
-association("сем", 100).
+association("семь", 100).
 association(["день", "рожден"], 100).
 association("рождеств", 100).
 association("фри", 101).
 association(["мяс", "по-французс"], 101).
 association("горохов", 102).
 association("гречнев", 102).
-association("ман", 102).
+association("манная", 102).
+association("манка", 102).
 association("гурьевс", 102).
 association("овсян", 102).
 association("перлов", 102).
@@ -1042,7 +1019,7 @@ association("загуст", 102).
 association("рыбал", 103).
 association("шашлык", 103).
 association("суп", 104).
-association("ово", 104).
+association("овощ", 104).
 association(["строител", "матриа"], 105).
 association("протеин", 105).
 association("яйц", 105).
@@ -1060,7 +1037,7 @@ association(["китайс", "кух"], 112).
 association(["японс", "кух"], 112).
 association(["русс", "кух"], 113).
 association("хинка", 113).
-association("ово", 114).
+association("овощ", 114).
 association("приправ", 114).
 association("доширак", 116).
 association("роллтон", 116).
@@ -1077,7 +1054,7 @@ association("бел", 119).
 association("эским", 120).
 association(["фруктов", "лед"], 120).
 association("пломбир", 120).
-association("аппе", 122).
+association("аппельс", 122).
 association("вкус", 122).
 association("ед", 122).
 association(["дат", "изготовлен"], 123).
@@ -1093,12 +1070,12 @@ association("пуз", 126).
 association(["больш", "живот"], 126).
 association("моло", 127).
 association(["молоч", "продукт"], 127).
-association("ово", 128).
+association("овощ", 128).
 association("консерв", 128).
 association("канцероген", 129).
 association("жир", 130).
 association("жарен", 130).
-association("ово", 131).
+association("овощ", 131).
 association("фрукт", 131).
 association(["правил", "питан"], 131).
 association("мяс", 131).
@@ -1115,21 +1092,21 @@ association("цитрусов", 135).
 association(["молоч", "продукт"], 136).
 association("сла", 137).
 association("выпеч", 138).
-association("сла", 138).
+association("сладк", 138).
 association("праздни", 139).
 association(["день", "рожден"], 139).
-association("сем", 139).
+association("семь", 139).
 association("близ", 139).
 association("праздни", 140).
 association(["нов", "год"], 140).
 association("близ", 140).
-association("сла", 141).
+association("сладк", 141).
 association("каш", 142).
 association("греч", 142).
 association("фастфуд", 143).
 association("сол", 143).
 association(["вред", "ед"], 143).
-association("яго", 144).
+association("ягод", 144).
 association(["правил", "питан"], 144).
 association("сок", 144).
 association("витам", 144).
@@ -1142,7 +1119,5 @@ association(["пальмов", "мас"], 148).
 association("глют", 148).
 association("генно-модифицирован", 148).
 association(["нитр", "натри"], 148).
-association("ово", 149).
+association("овощ", 149).
 association("фрукт", 149).
-association("зачёт", 154).
-

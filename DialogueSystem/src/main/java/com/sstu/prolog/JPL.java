@@ -49,14 +49,17 @@ public class JPL {
         try {
             res.append(query.nextSolution().get("Answer").toString());
 
+            System.err.println(res);
+
             if (currentExchange != userAnswers.size()) {
                 String introductory_word = INTRODUCTORY_WORDS.get(
                         userAnswers.size() % INTRODUCTORY_WORDS.size());
 
                 res.insert(0, introductory_word);
             }
+            if (!userAnswers.contains(sentence))
+                userAnswers.add(sentence);
 
-            userAnswers.add(sentence);
             currentExchange = userAnswers.size();
         } catch (Exception ex) {
             currentExchange--;
